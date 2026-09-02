@@ -1,13 +1,15 @@
+package com.studentmanagement;
+
 import java.util.Scanner;
 
 /**
  * Student Management System
  * Core Java Integrated Assignment
- *
+ * <p>
  * Demonstrates: variables, operators, if/else, switch, type casting,
  * Scanner, for/while/do-while loops, nested loops, 1D & 2D arrays,
  * methods, method overloading, classes, objects, constructors, this keyword.
- *
+ * <p>
  * No ArrayList / Collections / Streams / Lambdas / external libraries used.
  */
 public class StudentManagementSystem {
@@ -328,7 +330,7 @@ public class StudentManagementSystem {
 
         // NESTED LOOP: fill the 2D matrix from student objects
         for (int i = 0; i < studentCount; i++) {
-            double[] rowMarks = { students[i].subject1Marks, students[i].subject2Marks, students[i].subject3Marks };
+            double[] rowMarks = {students[i].subject1Marks, students[i].subject2Marks, students[i].subject3Marks};
             for (int j = 0; j < rowMarks.length; j++) {
                 marksMatrix[i][j] = rowMarks[j];
             }
@@ -366,34 +368,46 @@ public class StudentManagementSystem {
     // CALCULATION METHODS (with overloading)
     // =========================================================
 
-    /** Overload 1: total of two int marks */
+    /**
+     * Overload 1: total of two int marks
+     */
     static int calculateTotal(int mark1, int mark2) {
         return mark1 + mark2;
     }
 
-    /** Overload 2: total of three double marks */
+    /**
+     * Overload 2: total of three double marks
+     */
     static double calculateTotal(double mark1, double mark2, double mark3) {
         return mark1 + mark2 + mark3;
     }
 
-    /** Overload 1: average of two int marks */
+    /**
+     * Overload 1: average of two int marks
+     */
     static double calculateAverage(int mark1, int mark2) {
         return (double) (mark1 + mark2) / 2; // type casting to avoid integer division
     }
 
-    /** Overload 2: average of three int marks */
+    /**
+     * Overload 2: average of three int marks
+     */
     static double calculateAverage(int mark1, int mark2, int mark3) {
         int total = mark1 + mark2 + mark3;
         return (double) total / 3; // type casting requirement
     }
 
-    /** Overload 3: average of three double marks */
+    /**
+     * Overload 3: average of three double marks
+     */
     static double calculateAverage(double mark1, double mark2, double mark3) {
         double total = mark1 + mark2 + mark3;
         return total / 3;
     }
 
-    /** Determines letter grade from percentage using if/else. */
+    /**
+     * Determines letter grade from percentage using if/else.
+     */
     static String calculateGrade(double percentage) {
         String grade;
         if (percentage >= 90) {
@@ -414,7 +428,9 @@ public class StudentManagementSystem {
         return grade;
     }
 
-    /** A student passes only if all three subjects are >= 40. */
+    /**
+     * A student passes only if all three subjects are >= 40.
+     */
     static boolean isPassed(double m1, double m2, double m3) {
         return m1 >= 40 && m2 >= 40 && m3 >= 40; // relational + logical AND
     }
@@ -423,7 +439,9 @@ public class StudentManagementSystem {
     // INPUT HELPER METHODS (Scanner handling + validation loops)
     // =========================================================
 
-    /** Reads an integer safely, re-prompting on invalid (non-numeric) input. */
+    /**
+     * Reads an integer safely, re-prompting on invalid (non-numeric) input.
+     */
     static int readInt(String prompt) {
         int value;
         while (true) {
@@ -439,7 +457,9 @@ public class StudentManagementSystem {
         return value;
     }
 
-    /** Reads a double safely, re-prompting on invalid (non-numeric) input. */
+    /**
+     * Reads a double safely, re-prompting on invalid (non-numeric) input.
+     */
     static double readDouble(String prompt) {
         double value;
         while (true) {
@@ -453,44 +473,5 @@ public class StudentManagementSystem {
             }
         }
         return value;
-    }
-}
-
-/**
- * Represents a single student record.
- */
-class Student {
-
-    int studentId;
-    String name;
-    int age;
-    double subject1Marks;
-    double subject2Marks;
-    double subject3Marks;
-
-    // Parameterized constructor using the 'this' keyword
-    public Student(int studentId, String name, int age,
-                   double subject1Marks, double subject2Marks, double subject3Marks) {
-        this.studentId = studentId;
-        this.name = name;
-        this.age = age;
-        this.subject1Marks = subject1Marks;
-        this.subject2Marks = subject2Marks;
-        this.subject3Marks = subject3Marks;
-    }
-
-    /** Displays this student's full details. */
-    void displayStudent() {
-        double total = this.subject1Marks + this.subject2Marks + this.subject3Marks;
-        double average = total / 3;
-
-        System.out.println("Student ID     : " + this.studentId);
-        System.out.println("Name           : " + this.name);
-        System.out.println("Age            : " + this.age);
-        System.out.println("Subject 1      : " + this.subject1Marks);
-        System.out.println("Subject 2      : " + this.subject2Marks);
-        System.out.println("Subject 3      : " + this.subject3Marks);
-        System.out.printf("Total Marks    : %.2f%n", total);
-        System.out.printf("Average Marks  : %.2f%n", average);
     }
 }
